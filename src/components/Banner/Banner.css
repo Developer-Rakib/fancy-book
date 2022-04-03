@@ -1,0 +1,33 @@
+.banner-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    height: 75vh;
+}
+
+.banner-img img {}
+
+.banner-img {
+    width: 40%;
+}
+
+.banner-info {
+    width: 55%;
+
+}
+
+.banner-info h1 {
+    font-weight: 600;
+
+}
+
+.demoBtn {
+    background: blue;
+    color: white;
+    font-size: 18px;
+    padding: 11px 18px;
+    border-radius: 5px;
+    font-weight: 700;
+}

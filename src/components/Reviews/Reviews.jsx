@@ -1,9 +1,13 @@
 import React from 'react';
+import Review from '../Review/Review';
+import './Reviews.css'
 
 const Reviews = () => {
     return (
-        <div>
-            <h2 className="text-3xl">This is reviews</h2>
+        <div className='flex reviews-container'>
+            <Review></Review>
+            <Review></Review>
+            <Review></Review>
         </div>
     );
 };

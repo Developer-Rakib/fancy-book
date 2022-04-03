@@ -1,0 +1,16 @@
+.demuReview-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.demuReview-container h1 {
+    font-weight: 600;
+}
+
+.demuReview-container button {
+    background: blue;
+    color: white;
+    font-size: 14px;
+    padding: 5px 32px;
+    border-radius: 5px;
+}
