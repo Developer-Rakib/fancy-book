@@ -1,0 +1,20 @@
+.blog-contaner {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-contaner h4 {
+    padding: 10px 0px;
+    font-weight: 600;
+    color: #747474;
+}
+
+.blog-contaner p {
+    margin: 15px 0;
+    background: #32b3ea;
+    color: white;
+    padding: 20px 50px;
+    width: 50%;
+}

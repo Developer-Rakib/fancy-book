@@ -65,7 +65,7 @@ const Dashboard = () => {
     ];
 
     return (
-        <div className='flex flex-wrap w-5/6 mx-auto'>
+        <div className='flex flex-wrap w-5/6 mx-auto my-5'>
             <div className='w-1/2'>
                 <LineChart width={520} height={260} data={chartData}
                     margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -101,7 +101,7 @@ const Dashboard = () => {
                 </AreaChart>
             </div>
 
-            <div className='w-1/2 '>
+            <div className='w-1/2  my-5'>
                 <BarChart width={520} height={260} margin={{ top: 10, right: 0, left: 20, bottom: 0 }} data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
@@ -113,7 +113,7 @@ const Dashboard = () => {
                 </BarChart>
             </div>
 
-            <div className='w-1/2 '>
+            <div className='w-1/2  my-5'>
                 <PieChart width={500} height={260}>
                     <Tooltip />
                     <Pie data={ChartData1} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#32b3ea" />
