@@ -3,7 +3,6 @@ import ReactStars from 'react-rating-stars-component';
 import './Review.css'
 
 const Review = ({ reviewData }) => {
-    console.log(reviewData);
     let { name, comment, rating, saticpaction, userImg } = reviewData;
     return (
         <div className='py-10'>
