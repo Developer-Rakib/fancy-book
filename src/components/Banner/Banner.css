@@ -10,11 +10,11 @@
 .banner-img img {}
 
 .banner-img {
-    width: 40%;
+    width: 50%;
 }
 
 .banner-info {
-    width: 55%;
+    width: 50%;
 
 }
 
@@ -23,11 +23,17 @@
 
 }
 
+.banner-info h5 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px;
+    letter-spacing: 7px;
+}
+
 .demoBtn {
     background: blue;
     color: white;
-    font-size: 18px;
-    padding: 11px 18px;
-    border-radius: 5px;
-    font-weight: 700;
+    font-size: 16px;
+    padding: 9px 19px;
+    border-radius: 4px 4px 4px 24px;
+    font-weight: 500;
 }

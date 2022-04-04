@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Review from '../Review/Review';
+import Review from './Review/Review';
 import './DemoReview.css'
 
 const DemoReview = () => {
