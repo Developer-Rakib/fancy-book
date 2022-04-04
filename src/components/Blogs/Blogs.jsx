@@ -4,8 +4,10 @@ import './Blogs.css'
 
 const Blogs = () => {
     return (
-        <div className='blog-contaner'>
-            <Accordion>
+        <div className=''>
+
+            <h2 className="text-5xl py-8">Question & Answer</h2>
+            <Accordion className=' blog-contaner'>
 
                 <AccordionItem className='my-2'>
                     <AccordionItemHeading className='border inline-block rounded px-5'>

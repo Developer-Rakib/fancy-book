@@ -1,8 +1,5 @@
 .blog-contaner {
     height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .blog-contaner h4 {
