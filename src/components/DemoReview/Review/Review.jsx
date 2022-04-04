@@ -25,6 +25,7 @@ const Review = ({ reviewData }) => {
                         halfIcon={<i className="fa fa-star-half-alt"></i>}
                         fullIcon={<i className="fa fa-star"></i>}
                         color="#FB8200"
+                        activeColor="gray"
                     />
                 </h3>
             </div>
