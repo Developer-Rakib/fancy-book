@@ -1,44 +1,58 @@
 [
     {
+        "id": "101",
         "name": "Aziz Dryden",
         "comment": "The Alchemist' by Paulo Coelho is an inspirational story of Santiago, a youthful Spanish shepherd in the rolling hills of Andalusia. The boy has deep attachment with his flock but realizing that they are devoid of aesthetic sense and appreciation for nature which he beholds, loves and admires, the course of his life changes. His parents' life is associated with struggle in a country which people from far away fantasize and romanticize but for them it's not a place of dream and charm.",
         "rating": "5",
-        "saticpaction": "Perfect read"
+        "saticpaction": "Perfect read",
+        "userImg": "https://upload.wikimedia.org/wikipedia/commons/5/5e/LinkedIn_profil_maxime-remillard_400x400.png"
     },
     {
+        "id": "102",
         "name": "K. Smith",
         "comment": "We are told how people perish for a lack of vision/ goal/ dream/Personal Legend, where the magnitude of the dream is irrelevant. However, what's imperative is that a person possesses one. Why do I say this? Because dreams are the language of God. We're all placed here with a purpose and Personal Legend (what we've always wanted to accomplish)",
-        "rating": "4.5",
-        "saticpaction": "It is written"
+        "rating": "3",
+        "saticpaction": "It is written",
+        "userImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU"
     },
     {
+        "id": "103",
         "name": "Aly Jamal",
         "comment": "I bough this book after seeing an interview with Will Smith who highly recommended the book; it's pretty funny because the host mentioned that sales on amazon would go up from his endorsement, just as I was about to make the purchase. I would highly recommend this book to everyone! It's a wonderful story that will motivate you, inspire you and make you look at things in a different, ",
         "rating": "4",
-        "saticpaction": "Great story"
+        "saticpaction": "Great story",
+        "userImg": "https://a9p9n2x2.stackpathcdn.com/wp-content/blogs.dir/1/files/2018/07/Kevin-Dedner.jpg"
     },
     {
+        "id": "104",
         "name": "Mady",
         "comment": "I bought the book after hearing some strongly positive comments about it. I was underwhelmed by it, though. Maybe for an older kid this might be a good read? I found it simplistic and not really all that interesting. It is supposed to be inspirational but I found it hallow and empty. Its founded on some magic-y premises. I frankly found it misguided at best, harmful at worst. I wouldn't recommend anyone read it for advice or inspiration. Do not recommend",
         "rating": "1",
-        "saticpaction": "A real jewel"
+        "saticpaction": "A real jewel",
+        "userImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz3IXVx03e1jTnnSOipGz4NyVyFj18Ruf0kA&usqp=CAU"
     },
     {
+        "id": "105",
         "name": "Steven H",
         "comment": "This is a great, great book. It is filled with wisdom and life lessons and though the story is fictional, one can easily related with the main character's desire to fulfill an almost 'impossible' dream. The reviewer who said that this book is about chasing things and worldly possessions has completely missed the mark.",
-        "rating": "5",
-        "saticpaction": "Disappointed"
+        "rating": "3",
+        "saticpaction": "Disappointed",
+        "userImg": "https://i.pinimg.com/564x/df/b6/cc/dfb6ccc246c40067b73788f739a864d4.jpg"
     },
     {
+        "id": "106",
         "name": "Tario",
         "comment": "One of the most powerful and influential books I have ever read! I wish someone had gave me this book when I was a kid, I always buy one when I go to friends place and there are kids around!Must read! Love it!",
         "rating": "5",
-        "saticpaction": "Love it!"
+        "saticpaction": "Love it!",
+        "userImg": "https://sph.umd.edu/sites/default/files/styles/optimized/public/2020-12/Box-2946-Craig-Fryer.jpg?itok=1hyCq32d"
     },
     {
+        "id": "107",
         "name": "Coelho",
         "comment": "I don't read 'story' books very often, but I enjoyed this one from Paulo. The book has a simple style, but you still need to put some thought on some of the idea's evoked in it. I believe it to be a great book for teenagers. The alchemist also introduces any beginner to the world of spirituality. From an objective stand-point I would consider that the idea's proposed to this book should be considered",
-        "rating": "4.5",
-        "saticpaction": "Love it!"
+        "rating": "4",
+        "saticpaction": "Love it!",
+        "userImg": "https://i.pinimg.com/474x/d2/90/59/d290598c85c891fee8daa6f0f1becaaf.jpg"
     }
 ]

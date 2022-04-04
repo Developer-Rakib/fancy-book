@@ -1,17 +1,32 @@
 import React from 'react';
+import ReactStars from 'react-rating-stars-component';
 import './Review.css'
 
-const Review = () => {
+const Review = ({ reviewData }) => {
+    console.log(reviewData);
+    let { name, comment, rating, saticpaction, userImg } = reviewData;
     return (
         <div className='py-10'>
-            <div className='reveiw'>
-                <p>We had the most amazing experience with Jacqui, from start to finish. Throughout the whole planning process </p>
+            <div className='reveiw' title={comment}>
+                <p className=''>{comment.slice(0, 100)}...</p>
                 <div className="clint-img">
-                    <img src="https://manskkp.lv/assets/images/users/4.jpg" alt="" />
+                    <img src={userImg} alt="" />
                 </div>
-                <h3 className="pt-3">*******</h3>
-                <h3>Regina Miles</h3>
-                <h4>Banker</h4>
+
+
+                <h3>{name}</h3>
+                <h4>{saticpaction}</h4>
+                <h3 className="pt-1 w-2/5 mx-auto">
+                    <ReactStars
+                        count={rating}
+                        size={24}
+                        isHalf={true}
+                        emptyIcon={<i className="far fa-star"></i>}
+                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                        fullIcon={<i className="fa fa-star"></i>}
+                        color="#FB8200"
+                    />
+                </h3>
             </div>
         </div>
     );

@@ -13,4 +13,11 @@
     font-size: 14px;
     padding: 5px 32px;
     border-radius: 5px;
+    transition: .1s;
+}
+
+.demuReview-container button:hover {
+    background: rgb(23, 23, 200);
+    padding: 6px 35px;
+
 }

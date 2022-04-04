@@ -36,4 +36,11 @@
     padding: 9px 19px;
     border-radius: 4px 4px 4px 24px;
     font-weight: 500;
+    transition: .2s;
+}
+
+.demoBtn:hover {
+    background: rgb(19, 19, 202);
+    border-radius: 4px 4px 4px 4px;
+
 }

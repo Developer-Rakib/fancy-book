@@ -66,7 +66,7 @@ const Dashboard = () => {
 
     return (
         <div className='flex flex-wrap w-5/6 mx-auto'>
-            <div className='w-1/2  '>
+            <div className='w-1/2'>
                 <LineChart width={520} height={260} data={chartData}
                     margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -102,7 +102,7 @@ const Dashboard = () => {
             </div>
 
             <div className='w-1/2 '>
-                <BarChart width={520} height={260} data={chartData}>
+                <BarChart width={520} height={260} margin={{ top: 10, right: 0, left: 20, bottom: 0 }} data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
                     <YAxis />
