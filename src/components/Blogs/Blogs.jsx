@@ -6,13 +6,13 @@ const Blogs = () => {
     return (
         <div className=''>
 
-            <h2 className="text-5xl py-8">Question & Answer</h2>
-            <Accordion className=' blog-contaner'>
+            <h2 className="text-3xl sm:text-5xl py-8">Question & Answer</h2>
+            <Accordion className='blog-contaner'>
 
                 <AccordionItem className='my-2'>
                     <AccordionItemHeading className='border inline-block rounded px-5'>
                         <AccordionItemButton>
-                            <h4 className='text-2xl'>What harsh truths do you prefer to ignore?</h4>
+                            <h4 className='text-lg sm:text-2xl'>What harsh truths do you prefer to ignore?</h4>
                         </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
@@ -28,7 +28,7 @@ const Blogs = () => {
                 <AccordionItem className='my-2'>
                     <AccordionItemHeading className='border inline-block rounded px-5'>
                         <AccordionItemButton>
-                            <h4 className='text-2xl'>What harsh truths do you prefer to ignore?</h4>
+                            <h4 className='text-lg sm:text-2xl'>What harsh truths do you prefer to ignore?</h4>
                         </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>
@@ -44,7 +44,7 @@ const Blogs = () => {
                 <AccordionItem className='my-2'>
                     <AccordionItemHeading className='border inline-block rounded px-5'>
                         <AccordionItemButton>
-                            <h4 className='text-2xl'>What harsh truths do you prefer to ignore?</h4>
+                            <h4 className='text-lg sm:text-2xl'>What harsh truths do you prefer to ignore?</h4>
                         </AccordionItemButton>
                     </AccordionItemHeading>
                     <AccordionItemPanel>

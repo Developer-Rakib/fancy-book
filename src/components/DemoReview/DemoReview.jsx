@@ -9,7 +9,7 @@ const DemoReview = () => {
     let [reviewsData, setReviewsData] = useReviews();
     return (
         <div className='demuReview-container py-7'>
-            <h1 className="text-5xl">Customer Review({reviewsData.length})</h1>
+            <h1 className="text-2xl sm:text-5xl">Customer Review({reviewsData.length})</h1>
 
             <div className='flex justify-around flex-wrap'>
                 {

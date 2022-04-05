@@ -31,3 +31,18 @@
     font-size: 15px;
     font-weight: 700;
 }
+
+@media (max-width: 600px) {
+    .reveiw {
+        width: 300px;
+        height: auto;
+        border-radius: 11px;
+        padding: 18px;
+    }
+
+    .reveiw img {
+        width: 70px;
+        margin: 10px auto;
+        height: 70px;
+    }
+}
