@@ -12,7 +12,6 @@ import { signOut } from 'firebase/auth';
 const Header = () => {
     let [toggle, setToggle] = useState(false);
     const [user, loading, error] = useAuthState(auth);
-    console.log(user);
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
@@ -39,7 +38,7 @@ const Header = () => {
                 user &&
                 <>
                     <div className="user flex items-center">
-                        <p>{user.email}</p>
+                        <p>{user.displayName}</p>
                         <Link onClick={handleLogout} to={"/login"}>Log Out</Link>
                     </div>
 

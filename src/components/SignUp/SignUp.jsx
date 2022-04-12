@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './SignUp.css';
 import { auth } from '../../firebase/firebase.init';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+// import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
 
 
@@ -12,25 +14,46 @@ const SignUp = () => {
     const [pass, setPass] = useState({ value: "", error: "" });
     const [conPass, setConPass] = useState({ value: "", error: "" });
 
-    const [
-        createUserWithEmailAndPassword
-    ] = useCreateUserWithEmailAndPassword(auth);
-    const [user, loading, error] = useAuthState(auth);
+    // const [
+    //     createUserWithEmailAndPassword,
+    //     ,
+    //     loading,
+    //     error,
+    // ] = useCreateUserWithEmailAndPassword(auth);
+    // const [updateProfile, updating] = useUpdateProfile(auth);
+    const [user] = useAuthState(auth);
     const navigat = useNavigate();
 
-    // console.log(name);
-    // console.log(email);
-    // console.log(pass);
-    // console.log(conPass);
+
     if (user) {
+        console.log(user);
         navigat('/')
-        // console.log(user);
     }
 
     const handleLogIn = (event) => {
         event.preventDefault();
-        // console.log(email.value, pass.value);
-        createUserWithEmailAndPassword(email.value, pass.value)
+
+        createUserWithEmailAndPassword(auth, email.value, pass.value)
+            .then((result) => {
+                // Signed in 
+                updateProfile(auth.currentUser, {
+                    displayName: name.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+                }).then(() => {
+                    // Profile updated!
+                    console.log('updated');
+                }).catch((error) => {
+                    // An error occurred
+                    console.log(error.message);
+                });
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+        // createUserWithEmailAndPassword(email.value, pass.value);
+
+
     }
     const handleName = (event) => {
         setName({ value: event.target.value, error: "" })
