@@ -1,22 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './SignUp.css';
+import { auth } from '../../firebase/firebase.init';
+
+
 
 const SignUp = () => {
-    const handleLogIn = () => {
+    const [name, setName] = useState({ value: "", error: "" });
+    const [email, setEmail] = useState({ value: "", error: "" });
+    const [pass, setPass] = useState({ value: "", error: "" });
+    const [conPass, setConPass] = useState({ value: "", error: "" });
+
+    const [
+        createUserWithEmailAndPassword
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const [user, loading, error] = useAuthState(auth);
+    const navigat = useNavigate();
+
+    // console.log(name);
+    // console.log(email);
+    // console.log(pass);
+    // console.log(conPass);
+    if (user) {
+        navigat('/')
+        // console.log(user);
+    }
+
+    const handleLogIn = (event) => {
+        event.preventDefault();
+        // console.log(email.value, pass.value);
+        createUserWithEmailAndPassword(email.value, pass.value)
+    }
+    const handleName = (event) => {
+        setName({ value: event.target.value, error: "" })
+    }
+    const handleEmail = (event) => {
+        setEmail({ value: event.target.value, error: "" })
+    }
+    const handlePass = (event) => {
+        setPass({ value: event.target.value, error: "" })
 
     }
-    const handleName = () => {
-
-    }
-    const handleEmail = () => {
-
-    }
-    const handlePass = () => {
-
-    }
-    const handleConfrmPass = () => {
-
+    const handleConfrmPass = (event) => {
+        setConPass({ value: event.target.value, error: "" })
     }
     return (
         <div className='SignIn-container'>

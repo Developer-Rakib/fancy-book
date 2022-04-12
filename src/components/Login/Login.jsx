@@ -1,17 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.init';
 import './Login.css';
 
+
+
 const Login = () => {
+    const [email, setEmail] = useState({ value: "", error: "" });
+    const [pass, setPass] = useState({ value: "", error: "" });
 
-    const hadnleLogIn = () => {
+    const navigat = useNavigate()
+    const [
+        signInWithEmailAndPassword,
+    ] = useSignInWithEmailAndPassword(auth);
+    const [user, loading, error] = useAuthState(auth);
 
+    if (user) {
+        navigat('/')
+        // console.log(user);
     }
-    const hndleEmail = () => {
 
+    const hadnleLogIn = (event) => {
+        signInWithEmailAndPassword(email.value, pass.value)
+        event.preventDefault()
     }
-    const hndlePass = () => {
-
+    const hndleEmail = (event) => {
+        setEmail({ value: event.target.value, error: "" })
+    }
+    const hndlePass = (event) => {
+        setPass({ value: event.target.value, error: "" })
     }
     return (
         <div className='SignIn-container'>
@@ -27,7 +45,6 @@ const Login = () => {
                             </div>
                             <div>
                                 <input onBlur={hndlePass} type="password" name="password" placeholder="Enter Your Password" id="" required />
-                                <p style={{ color: 'red' }}>{ }</p>
                             </div>
                             <div>
                                 <input type="submit" value="Login" />
