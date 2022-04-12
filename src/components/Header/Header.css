@@ -39,16 +39,26 @@
 
 .user p {
     font-size: 14px;
+    margin: 0 10px 0px 3px;
+    color: #787878;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1.2px;
 }
 
 .user a {
-    margin: 0 7px !important;
+    margin: 0 !important;
     font-size: 12px;
     padding: 5px 10px;
     background-color: #00b3ff;
     color: white;
     border-radius: 4px;
     display: inline-block;
+}
+
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 @media (max-width: 640px) {

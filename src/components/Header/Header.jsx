@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import "./Header.css"
 import openNav from '../../img/openNav.png'
@@ -7,11 +7,14 @@ import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/firebase.init';
 import { signOut } from 'firebase/auth';
+import { UserName } from '../../App';
 
 
 const Header = () => {
     let [toggle, setToggle] = useState(false);
     const [user, loading, error] = useAuthState(auth);
+    let [uName, setUName] = useContext(UserName);
+    // console.log(user);
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
@@ -36,16 +39,16 @@ const Header = () => {
             </ul>
             {
                 user &&
-                <>
-                    <div className="user flex items-center">
-                        <p>{user.displayName}</p>
-                        <Link onClick={handleLogout} to={"/login"}>Log Out</Link>
-                    </div>
 
-                </>
+                <div className="user flex items-center">
+                    <img src={user.photoURL ? user.photoURL : "https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"} alt="" />
+                    <p>{user.displayName || uName}</p>
+                    <Link onClick={handleLogout} to={"/login"}>Log Out</Link>
+                </div>
+
             }
         </div >
     );
-};
+}
 
 export default Header;
