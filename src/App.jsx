@@ -10,7 +10,6 @@ import NotFound from './components/NotFound/NotFound'
 import Reviews from './components/Reviews/Reviews'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
