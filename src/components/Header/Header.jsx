@@ -12,7 +12,6 @@ const Header = () => {
         setToggle(!toggle)
     }
 
-    console.log(toggle);
     return (
         <div className='pt-4 pb-10 nav'>
             <img onClick={navBtnHndle} className='sm:hidden absolute right-8 top-6' width={25} src={toggle ? closeNav : openNav} alt="" />
@@ -22,6 +21,7 @@ const Header = () => {
                 <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/dashboard"}>DASHBOARD</NavLink>
                 <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/blogs"}>BLOGS</NavLink>
                 <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/about"}>ABOUT</NavLink>
+                <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/login"}>Login</NavLink>
             </ul>
         </div >
     );
