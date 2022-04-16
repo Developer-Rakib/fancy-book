@@ -4,6 +4,7 @@ import './SignUp.css';
 import app, { auth } from '../../firebase/firebase.init';
 import toast from 'react-hot-toast';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import Loading from '../Loading/Loading';
 
 
 
@@ -86,7 +87,6 @@ const SignUp = () => {
         }
     }
     const handlePass = (event) => {
-        console.log(event.target.value.length);
         if (event.target.value == "") {
             setPass({ value: "", error: "Password is Empty" })
         } else if (event.target.value.length < 7) {
@@ -103,9 +103,12 @@ const SignUp = () => {
         } else if (event.target.value !== pass.value) {
             setConPass({ value: "", error: "Confirm Password is Miss Match" })
         } else {
-            console.log("match");
             setConPass({ value: event.target.value, error: "" })
         }
+    }
+
+    if (loading) {
+        return <Loading></Loading>
     }
     return (
         <div className='SignIn-container'>

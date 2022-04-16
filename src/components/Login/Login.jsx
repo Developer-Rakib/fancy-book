@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.init';
+import Loading from '../Loading/Loading';
 import './Login.css';
 
 
@@ -10,21 +11,31 @@ import './Login.css';
 const Login = () => {
     const [email, setEmail] = useState({ value: "", error: "" });
     const [pass, setPass] = useState({ value: "", error: "" });
-
-    const navigat = useNavigate()
+    // const [authUser] = useAuthState(auth);
+    const navigate = useNavigate()
+    const location = useLocation()
     const [
         signInWithEmailAndPassword, user, loading, error
     ] = useSignInWithEmailAndPassword(auth);
 
-    // const [user, loading, error] = useAuthState(auth);
+    let from = location.state?.from?.pathname || "/";
+
+    const hadnleLogIn = (event) => {
+        event.preventDefault()
+        signInWithEmailAndPassword(email.value, pass.value)
+
+    }
 
 
     useEffect(() => {
+
         if (user) {
+            // console.log("navigate");
+            navigate(from, { replace: true });
             toast.success("Successfully Login!", { id: "signin" })
-            navigat("/")
         }
     }, [user])
+
     useEffect(() => {
         if (error) {
             console.log(error.code);
@@ -49,17 +60,16 @@ const Login = () => {
 
 
 
-    const hadnleLogIn = (event) => {
-        signInWithEmailAndPassword(email.value, pass.value)
-        event.preventDefault()
 
-    }
 
     const hndleEmail = (event) => {
         setEmail({ value: event.target.value, error: "" })
     }
     const hndlePass = (event) => {
         setPass({ value: event.target.value, error: "" })
+    }
+    if (loading) {
+        return <Loading></Loading>
     }
     return (
         <div className='SignIn-container'>

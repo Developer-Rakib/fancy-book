@@ -38,8 +38,8 @@
 }
 
 .user p {
-    font-size: 14px;
-    margin: 0 10px 0px 3px;
+    font-size: 11px;
+    margin: 0 7px 0px 3px;
     color: #787878;
     letter-spacing: 1.2px;
     text-transform: capitalize;
@@ -47,8 +47,8 @@
 
 .user button {
     margin: 0 !important;
-    font-size: 12px;
-    padding: 5px 10px;
+    font-size: 11px;
+    padding: 3px 9px;
     background-color: #00b3ff;
     color: white;
     border-radius: 4px;
@@ -56,8 +56,8 @@
 }
 
 .user img {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
 }
 

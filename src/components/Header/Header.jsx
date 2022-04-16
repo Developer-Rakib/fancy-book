@@ -3,18 +3,18 @@ import "./Header.css"
 import openNav from '../../img/openNav.png'
 import closeNav from '../../img/close.png'
 import { useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/firebase.init';
 import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 const Header = () => {
     let [toggle, setToggle] = useState(false);
-    const [user, loading, error] = useAuthState(auth);
+    let [user] = useAuthState(auth)
     let navigat = useNavigate();
 
-    console.log(user);
+    // console.log(user);
     // console.log(user?.displayName);
 
     const navBtnHndle = () => {
