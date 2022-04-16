@@ -96,14 +96,16 @@ img {
 }
 
 
-.form form p a {
+.form p a,
+.forgot {
     color: blue;
-
     font-weight: 600;
+    font-size: 15px;
 }
 
-.form form p a:hover {
-    color: blue;
+.form p a:hover,
+.forgot:hover {
+    color: rgb(10, 10, 139);
 }
 
 .error {

@@ -1,3 +1,4 @@
+import { sendPasswordResetEmail } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
@@ -11,7 +12,6 @@ import './Login.css';
 const Login = () => {
     const [email, setEmail] = useState({ value: "", error: "" });
     const [pass, setPass] = useState({ value: "", error: "" });
-    // const [authUser] = useAuthState(auth);
     const navigate = useNavigate()
     const location = useLocation()
     const [
@@ -28,11 +28,9 @@ const Login = () => {
 
 
     useEffect(() => {
-
         if (user) {
-            // console.log("navigate");
             navigate(from, { replace: true });
-            toast.success("Successfully Login!", { id: "signin" })
+            toast.success("Login Successfull!", { id: "signin" })
         }
     }, [user])
 
@@ -62,6 +60,21 @@ const Login = () => {
 
 
 
+    const handleForgetPass = () => {
+        console.log(email.value);
+        sendPasswordResetEmail(auth, email.value)
+            .then(() => {
+                toast.success('Mail Sent!', { id: "signup" })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                if (errorCode == "auth/missing-email") {
+                    toast.error('Please Enter Email', { id: "signup" })
+                    console.log(errorCode);
+                }
+            });
+
+    }
     const hndleEmail = (event) => {
         setEmail({ value: event.target.value, error: "" })
     }
@@ -89,10 +102,9 @@ const Login = () => {
                             <div className='input-container'>
                                 <input type="submit" value="Login" />
                             </div>
-                            <p>Forgot assword? <a href="">Click Here</a></p>
-                            <p>Dont have an account ? <Link to={"/signUp"}>Sign Up</Link></p>
                         </form>
-                        {/* <DirectSignIn></DirectSignIn> */}
+                        <p>Forgot Password? <button className='forgot' onClick={handleForgetPass}>Click Here</button></p>
+                        <p>Dont have an account ? <Link to={"/signUp"}>Sign Up</Link></p>
                     </div>
 
                 </div>

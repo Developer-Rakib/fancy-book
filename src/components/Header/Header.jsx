@@ -2,27 +2,31 @@ import { Link as button, NavLink, useNavigate } from 'react-router-dom';
 import "./Header.css"
 import openNav from '../../img/openNav.png'
 import closeNav from '../../img/close.png'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { auth } from '../../firebase/firebase.init';
 import { signOut } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { DisplyNameContext } from '../../App';
 
 
 const Header = () => {
     let [toggle, setToggle] = useState(false);
+    // const [displyName, setDisplyName] = useContext(DisplyNameContext)
+    // console.log(displyName);
+
     let [user] = useAuthState(auth)
     let navigat = useNavigate();
 
-    // console.log(user);
-    // console.log(user?.displayName);
+    console.log(user);
+    console.log(user?.displayName);
 
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
     const handleLogout = () => {
         signOut(auth).then(() => {
-            toast.success('Logout Complete!', { id: "logOut" })
+            toast.success('Logged Out!', { id: "logOut" })
             navigat("/login")
 
         }).catch((error) => {

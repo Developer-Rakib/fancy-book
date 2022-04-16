@@ -5,6 +5,7 @@ import app, { auth } from '../../firebase/firebase.init';
 import toast from 'react-hot-toast';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Loading from '../Loading/Loading';
+import { DisplyNameContext } from '../../App';
 
 
 
@@ -13,6 +14,7 @@ const SignUp = () => {
     const [email, setEmail] = useState({ value: "", error: "" });
     const [pass, setPass] = useState({ value: "", error: "" });
     const [conPass, setConPass] = useState({ value: "", error: "" });
+    const [displyName, setDisplyName] = useContext(DisplyNameContext)
 
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, UpError] = useUpdateProfile(auth);
@@ -22,10 +24,11 @@ const SignUp = () => {
     useEffect(() => {
         if (user) {
             // console.log(user);
-            toast.success('Successfully SignUp!', { id: "signup" })
+            toast.success('SignUp Successfully!', { id: "signup" })
             navigat('/')
         }
     }, [user])
+
     useEffect(() => {
         if (error) {
             console.log(error.code);
@@ -36,7 +39,6 @@ const SignUp = () => {
                 case "invalid-email":
                     toast.error('invalid-email!', { id: "signup" })
                     break;
-
 
                 default:
                     toast.error('Somting is wrong', { id: "signup" })
@@ -65,6 +67,7 @@ const SignUp = () => {
 
         await createUserWithEmailAndPassword(email.value, pass.value);
         await updateProfile({ displayName: name.value });
+        setDisplyName(name.value)
 
     }
 
@@ -106,7 +109,9 @@ const SignUp = () => {
             setConPass({ value: event.target.value, error: "" })
         }
     }
+    const test = () => {
 
+    }
     if (loading) {
         return <Loading></Loading>
     }
@@ -140,7 +145,7 @@ const SignUp = () => {
                             </div>
                             <p>You already have an account ? <Link to={"/login"}>Login</Link></p>
                         </form>
-                        {/* <DirectSignIn></DirectSignIn> */}
+                        <button onClick={test}>Check</button>
                     </div>
 
                 </div>
