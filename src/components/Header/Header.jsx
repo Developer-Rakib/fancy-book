@@ -14,6 +14,9 @@ const Header = () => {
     const [user, loading, error] = useAuthState(auth);
     let navigat = useNavigate();
 
+    console.log(user);
+    // console.log(user?.displayName);
+
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
@@ -46,7 +49,7 @@ const Header = () => {
 
                 <div className="user flex items-center">
                     <img src={user.photoURL ? user.photoURL : "https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"} alt="" />
-                    <p>{user.email}</p>
+                    <p>{user?.displayName}</p>
                     <button onClick={handleLogout}>LogOut</button>
                 </div>
 

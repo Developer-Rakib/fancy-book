@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import app, { auth } from '../../firebase/firebase.init';
 import toast from 'react-hot-toast';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 
 
 
@@ -15,13 +15,12 @@ const SignUp = () => {
 
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, UpError] = useUpdateProfile(auth);
-
     const navigat = useNavigate();
 
 
     useEffect(() => {
         if (user) {
-            console.log(user);
+            // console.log(user);
             toast.success('Successfully SignUp!', { id: "signup" })
             navigat('/')
         }
@@ -45,7 +44,7 @@ const SignUp = () => {
         }
     }, [error])
 
-    const handleSignUp = (event) => {
+    const handleSignUp = async (event) => {
         event.preventDefault();
 
         if (name.value == "") {
@@ -63,8 +62,8 @@ const SignUp = () => {
         }
 
 
-        setEmail({ value: pass.value, error: "" })
-        createUserWithEmailAndPassword(email.value, pass.value);
+        await createUserWithEmailAndPassword(email.value, pass.value);
+        await updateProfile({ displayName: name.value });
 
     }
 
