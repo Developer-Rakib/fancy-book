@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link as button, NavLink, useNavigate } from 'react-router-dom';
 import "./Header.css"
 import openNav from '../../img/openNav.png'
 import closeNav from '../../img/close.png'
@@ -7,19 +6,26 @@ import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/firebase.init';
 import { signOut } from 'firebase/auth';
-import { UserName } from '../../App';
+import toast from 'react-hot-toast';
 
 
 const Header = () => {
     let [toggle, setToggle] = useState(false);
     const [user, loading, error] = useAuthState(auth);
-    let [uName, setUName] = useContext(UserName);
-    // console.log(user);
+    let navigat = useNavigate();
+
     const navBtnHndle = () => {
         setToggle(!toggle)
     }
     const handleLogout = () => {
-        signOut(auth);
+        signOut(auth).then(() => {
+            toast.success('Logout Complete!', { id: "logOut" })
+            navigat("/login")
+
+        }).catch((error) => {
+            console.log(error.message);
+        });
+
     };
 
     return (
@@ -32,9 +38,7 @@ const Header = () => {
                 <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/blogs"}>BLOGS</NavLink>
                 <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/about"}>ABOUT</NavLink>
                 {
-                    user ? <NavLink onClick={handleLogout} className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/login"}>Log Out</NavLink>
-                        :
-                        <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/login"}>Login</NavLink>
+                    !user && <NavLink className={({ isActive }) => (isActive ? 'activeColor' : 'navLink')} to={"/login"}>Login</NavLink>
                 }
             </ul>
             {
@@ -42,8 +46,8 @@ const Header = () => {
 
                 <div className="user flex items-center">
                     <img src={user.photoURL ? user.photoURL : "https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"} alt="" />
-                    <p>{user.displayName || uName}</p>
-                    <Link onClick={handleLogout} to={"/login"}>Log Out</Link>
+                    <p>{user.email}</p>
+                    <button onClick={handleLogout}>LogOut</button>
                 </div>
 
             }

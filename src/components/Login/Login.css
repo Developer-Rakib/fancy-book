@@ -43,10 +43,10 @@ img {
     position: absolute;
     left: 0;
     bottom: -10px;
-    height: 4px;
+    height: 5px;
     width: 80px;
-    background-color: black;
-    border-radius: 10px;
+    background-color: blue;
+    border-radius: 8px;
 }
 
 .form form {}
@@ -55,18 +55,25 @@ img {
     width: 100%;
     padding: 6px 20px;
     border-radius: 65px;
-    margin-bottom: 18px;
     border: none;
     outline: none;
     background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0225, 0255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
     font-size: 12px;
     letter-spacing: 1px;
     color: black;
+}
 
+.form form input:focus {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.input-container {
+    margin-bottom: 18px;
+    padding-bottom: 10px;
 }
 
 .form form input::placeholder {
@@ -76,19 +83,33 @@ img {
 
 .form form input[type="submit"] {
     max-width: 100px;
+    cursor: pointer;
     background-color: white;
     color: rgb(41, 40, 40);
     font-weight: 600;
+    transition: .2s;
 }
 
-.form form p {
-    color: black;
-
+.form form input[type="submit"]:hover {
+    background-color: blue;
+    color: white;
 }
+
 
 .form form p a {
-    color: black;
+    color: blue;
+
     font-weight: 600;
+}
+
+.form form p a:hover {
+    color: blue;
+}
+
+.error {
+    color: rgb(213, 20, 20);
+    font-size: 14px;
+    padding: 2px 0px 0 10px;
 }
 
 .direct-login {}

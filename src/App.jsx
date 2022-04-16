@@ -13,31 +13,27 @@ import Reviews from './components/Reviews/Reviews'
 import SignUp from './components/SignUp/SignUp';
 
 
-export const UserName = createContext('User Name')
+// export const UserName = createContext('User Name')
 
 function App() {
 
-  const [uName, setUName] = useState()
-  // console.log(uName);
   return (
-    <UserName.Provider value={[uName, setUName]}>
-      <div className="App">
-        <Header></Header>
-        <Toaster></Toaster>
-        <Routes>
-          <Route path='/' element={<Home></Home>}></Route>
-          <Route path='/home' element={<Home></Home>}></Route>
-          <Route path='/reviews' element={<Reviews></Reviews>}></Route>
-          <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
-          <Route path='/blogs' element={<Blogs></Blogs>}></Route>
-          <Route path='/about' element={<About></About>}></Route>
-          <Route path='/login' element={<Login></Login>}></Route>
-          <Route path='/signUp' element={<SignUp></SignUp>}></Route>
-          <Route path='*' element={<NotFound></NotFound>}></Route>
-        </Routes>
+    <div className="App">
+      <Header></Header>
+      <Toaster></Toaster>
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/reviews' element={<Reviews></Reviews>}></Route>
+        <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/signUp' element={<SignUp></SignUp>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+      </Routes>
 
-      </div>
-    </UserName.Provider>
+    </div>
   )
 }
 

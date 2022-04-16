@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import './SignUp.css';
 import app, { auth } from '../../firebase/firebase.init';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { UserName } from '../../App';
+import toast from 'react-hot-toast';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 
 
@@ -13,79 +12,128 @@ const SignUp = () => {
     const [email, setEmail] = useState({ value: "", error: "" });
     const [pass, setPass] = useState({ value: "", error: "" });
     const [conPass, setConPass] = useState({ value: "", error: "" });
-    let [uName, setUName] = useContext(UserName);
 
-    // const [createUserWithEmailAndPassword, , loading, error] = useCreateUserWithEmailAndPassword(auth);
-    // const [updateProfile, updating] = useUpdateProfile(auth);
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, UpError] = useUpdateProfile(auth);
 
-    const [user] = useAuthState(auth);
     const navigat = useNavigate();
 
-    if (user) {
-        navigat('/')
-    }
 
-    const handleSignUp = async (event) => {
+    useEffect(() => {
+        if (user) {
+            console.log(user);
+            toast.success('Successfully SignUp!', { id: "signup" })
+            navigat('/')
+        }
+    }, [user])
+    useEffect(() => {
+        if (error) {
+            console.log(error.code);
+            switch (error.code) {
+                case "auth/email-already-in-use":
+                    toast.error('Email Aleady Exist!', { id: "signup" })
+                    break;
+                case "invalid-email":
+                    toast.error('invalid-email!', { id: "signup" })
+                    break;
+
+
+                default:
+                    toast.error('Somting is wrong', { id: "signup" })
+                    break;
+            }
+        }
+    }, [error])
+
+    const handleSignUp = (event) => {
         event.preventDefault();
 
+        if (name.value == "") {
+            setName({ value: "", error: "Name is Empty" })
+        }
+        if (pass.value == "") {
+            setPass({ value: "", error: "Password is Empty" })
+        }
+        if (conPass.value == "") {
+            setConPass({ value: "", error: "Confirm Password is Empty" })
+        }
+        if (email.value == "") {
+            setEmail({ value: "", error: "Email is not valid" })
+            return
+        }
 
-        createUserWithEmailAndPassword(auth, email.value, pass.value)
-            .then((result) => {
-                setUName(name.value)
-                updateProfile(auth.currentUser, {
-                    displayName: name.value
-                }).then(() => {
-                    // Profile updated!
-                    console.log('updated');
-                }).catch((error) => {
-                    // An error occurred
-                    console.log(error.message);
-                });
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
-            });
 
+        setEmail({ value: pass.value, error: "" })
+        createUserWithEmailAndPassword(email.value, pass.value);
 
     }
+
     const handleName = (event) => {
-        setName({ value: event.target.value, error: "" })
+        if (event.target.value == "") {
+            setName({ value: "", error: "Name is Empty" })
+        } else {
+            setName({ value: event.target.value, error: "" })
+        }
 
     }
     const handleEmail = (event) => {
-        setEmail({ value: event.target.value, error: "" })
+        if (event.target.value == "") {
+            setEmail({ value: "", error: "Email is Empty" })
+        } else if (!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(event.target.value)) {
+            setEmail({ value: "", error: "Email is not valid" })
+        }
+        else {
+            setEmail({ value: event.target.value, error: "" })
+        }
     }
     const handlePass = (event) => {
-        setPass({ value: event.target.value, error: "" })
+        console.log(event.target.value.length);
+        if (event.target.value == "") {
+            setPass({ value: "", error: "Password is Empty" })
+        } else if (event.target.value.length < 7) {
+            setPass({ value: "", error: "Password is to Sort, Must be 6 digit" })
+        }
+        else {
+            setPass({ value: event.target.value, error: "" })
+        }
 
     }
     const handleConfrmPass = (event) => {
-        setConPass({ value: event.target.value, error: "" })
+        if (event.target.value == "") {
+            setConPass({ value: "", error: "Confirm Password is Empty" })
+        } else if (event.target.value !== pass.value) {
+            setConPass({ value: "", error: "Confirm Password is Miss Match" })
+        } else {
+            console.log("match");
+            setConPass({ value: event.target.value, error: "" })
+        }
     }
     return (
         <div className='SignIn-container'>
-            <div className="SignIn pt-8 pb-5">
+            <div className="SignIn pt-8 pb-8">
                 <div className="box">
                     <div className="form">
                         <h1>Sign Up Form</h1>
 
                         <form onSubmit={handleSignUp}>
-                            <div>
-                                <input onBlur={handleName} type="displayName" name="displayName" placeholder="Enter Your Name" id="" required />
+                            <div className='input-container'>
+                                <input onBlur={handleName} type="displayName" name="displayName" placeholder="Enter Your Name" id="" />
+                                <p className='error'>{name.error}</p>
                             </div>
-                            <div>
-                                <input onBlur={handleEmail} type="email" name="email" placeholder="Enter Your Email" id="" required />
+                            <div className='input-container'>
+                                <input onBlur={handleEmail} type="text" name="email" placeholder="Enter Your Email" id="" />
+                                <p className='error'>{email.error}</p>
                             </div>
-                            <div>
-                                <input onBlur={handlePass} type="password" name="password" placeholder="Enter Your Password" id="" required />
+                            <div className='input-container'>
+                                <input onBlur={handlePass} type="password" name="password" placeholder="Enter Your Password" id="" />
+                                <p className='error'>{pass.error}</p>
                             </div>
 
-                            <div>
-                                <input onBlur={handleConfrmPass} type="password" name="confirmPassword" placeholder="Enter Your Confirm Password" id="" required />
+                            <div className='input-container'>
+                                <input onBlur={handleConfrmPass} type="password" name="confirmPassword" placeholder="Enter Your Confirm Password" id="" />
+                                <p className='error'>{conPass.error}</p>
                             </div>
-                            <div>
+                            <div className='input-container'>
                                 <input type="submit" value="Sign up" />
                             </div>
                             <p>You already have an account ? <Link to={"/login"}>Login</Link></p>

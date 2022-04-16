@@ -41,11 +41,11 @@
     font-size: 14px;
     margin: 0 10px 0px 3px;
     color: #787878;
-    font-family: 'Bebas Neue', cursive;
     letter-spacing: 1.2px;
+    text-transform: capitalize;
 }
 
-.user a {
+.user button {
     margin: 0 !important;
     font-size: 12px;
     padding: 5px 10px;
